@@ -76,7 +76,7 @@ const Notification = (props) => {
                 </NotificationsHeader>
                 <MarkRead onClick={() => setHasSeen(true)}>Mark all as read</MarkRead>
             </Header>
-            <NotificationList hasSeenMessages={handleSeenMessagesCount} isClear={hasSeen}/>
+            <NotificationList hasSeenMessages={handleSeenMessagesCount} notificationsClear={hasSeen}/>
         </Container>
     )
 }

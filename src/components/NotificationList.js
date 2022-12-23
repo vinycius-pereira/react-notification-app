@@ -5,7 +5,7 @@ const NotificationList = (props) => {
 
     return(
         <div>
-            <NotificationItem hasSeenMessages={props.hasSeenMessages} isClear={props.isClear} />
+            <NotificationItem hasSeenMessages={props.hasSeenMessages} notificationsClear={props.notificationsClear} />
         </div>
     )
 }

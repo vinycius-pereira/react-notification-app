@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import {useEffect, useState} from "react";
 
 
 const NotificationBubble = styled.div`
@@ -6,6 +7,7 @@ const NotificationBubble = styled.div`
   align-items: center;
   font-size: 16px;
   background: ${props => props.unseen ? "hsl(210, 60%, 98%)" : "white"};
+  cursor: ${props => props.unseen ? "pointer" : "auto"};
   border-radius: 15px;
   padding: 15px;
   margin: 5px 30px;
@@ -151,37 +153,59 @@ const users = [
 ]
 
 const NotificationItem = (props) => {
-    let seenCounter = 0
+    const [counter, setCounter] = useState(0)
 
-    for (let x = 0; x <= users.length - 1; x++) {
-        if (!users[x].seen) {
-            seenCounter++
+    useEffect(() => {
+        let unseenNotificationsCounter = 0
+
+        users.forEach((user) => {
+            if(!user.seen) unseenNotificationsCounter += 1
+        })
+
+        if(props.notificationsClear){
+            setCounter(0)
+        } else {
+            setCounter(unseenNotificationsCounter)
+        }
+        props.hasSeenMessages(unseenNotificationsCounter)
+    },[counter, props])
+
+    const handleReadNotification = (notificationSeen, index) => {
+        if(!notificationSeen && counter !== 0){
+            setCounter(prevState => prevState - 1)
+            users[index].seen = true
+            props.hasSeenMessages(counter)
         }
     }
 
-    props.hasSeenMessages(seenCounter)
 
-    return users.map(user => {
-        if (!user.seen && props.isClear) {
-            user.seen = props.isClear
+    return users.map((user, i) => {
+
+        if (!user.seen && props.notificationsClear) {
+            user.seen = true
         }
-
+        
         return (
-            <NotificationBubble key={Math.random()} unseen={!user.seen}>
+            <NotificationBubble
+                key={Math.random()}
+                onClick={() => handleReadNotification(user.seen, i)}
+                unseen={!user.seen}
+            >
                 <Container>
                     <div>
                         <div style={{display: 'flex'}}>
                             <div>
-                                <img src={require(`../../public/images/${user.avatar}.webp`)} alt="profile avatar" width="40px"/>
+                                <img src={require(`../../public/images/${user.avatar}.webp`)} alt="profile avatar"
+                                     width="40px"/>
                             </div>
                             <div style={{marginLeft: '10px'}}>
                                 <Body>
-                                <div>
-                                    <Name>{user.name}</Name>
-                                    <RegularText>{user.action}</RegularText>
-                                    {user.body && <Message>{user.body}</Message>}
-                                    {!user.seen && <HasSeenNotification/>}
-                                </div>
+                                    <div>
+                                        <Name>{user.name}</Name>
+                                        <RegularText>{user.action}</RegularText>
+                                        {user.body && <Message>{user.body}</Message>}
+                                        {!user.seen && <HasSeenNotification/>}
+                                    </div>
                                 </Body>
                                 <Date>{user.date}</Date>
                                 {user.message && (
