@@ -58,7 +58,7 @@ const Container = styled.div`
 
 const Notification = (props) => {
     const [hasSeen, setHasSeen] = useState(false)
-    const [messagesCounter, setMessagesCounter] = useState(false)
+    const [messagesCounter, setMessagesCounter] = useState(0)
 
 
     const handleSeenMessagesCount = seen => {
@@ -70,7 +70,9 @@ const Notification = (props) => {
             <Header>
                 <NotificationsHeader>
                     <Title>Notifications</Title>
-                    <NotificationCounter>{messagesCounter}</NotificationCounter>
+                    {messagesCounter !== 0 && (
+                        <NotificationCounter>{messagesCounter}</NotificationCounter>
+                    )}
                 </NotificationsHeader>
                 <MarkRead onClick={() => setHasSeen(true)}>Mark all as read</MarkRead>
             </Header>
