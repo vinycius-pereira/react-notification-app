@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-notification-app/static/css/main.a494d45d.css",
-    "main.js": "/react-notification-app/static/js/main.a58c06c7.js",
+    "main.js": "/react-notification-app/static/js/main.a4fdab12.js",
     "static/media/avatar-rizky-hasanuddin.webp": "/react-notification-app/static/media/avatar-rizky-hasanuddin.2c9e9a5d4982e8f1b614.webp",
     "static/media/avatar-jacob-thompson.webp": "/react-notification-app/static/media/avatar-jacob-thompson.ef1880754355ebe956bb.webp",
     "static/media/avatar-nathan-peterson.webp": "/react-notification-app/static/media/avatar-nathan-peterson.03727540c8ed8341d745.webp",
@@ -12,10 +12,10 @@
     "static/media/avatar-angela-gray.webp": "/react-notification-app/static/media/avatar-angela-gray.be3397e8fa98e1cac926.webp",
     "index.html": "/react-notification-app/index.html",
     "main.a494d45d.css.map": "/react-notification-app/static/css/main.a494d45d.css.map",
-    "main.a58c06c7.js.map": "/react-notification-app/static/js/main.a58c06c7.js.map"
+    "main.a4fdab12.js.map": "/react-notification-app/static/js/main.a4fdab12.js.map"
   },
   "entrypoints": [
     "static/css/main.a494d45d.css",
-    "static/js/main.a58c06c7.js"
+    "static/js/main.a4fdab12.js"
   ]
 }
