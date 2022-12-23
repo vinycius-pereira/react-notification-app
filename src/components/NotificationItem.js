@@ -172,7 +172,7 @@ const NotificationItem = (props) => {
                     <div>
                         <div style={{display: 'flex'}}>
                             <div>
-                                <img src={`/images/${user.avatar}.webp`} alt="profile avatar" width="40px"/>
+                                <img src={require(`../../public/images/${user.avatar}.webp`)} alt="profile avatar" width="40px"/>
                             </div>
                             <div style={{marginLeft: '10px'}}>
                                 <Body>
@@ -194,7 +194,7 @@ const NotificationItem = (props) => {
                     </div>
                     <div>
                         {user.image && (
-                            <img src={`/images/${user.image}.webp`} alt="preview" width="50px"/>
+                            <img src={require(`../../public/images/${user.image}.webp`)} alt="preview" width="50px"/>
                         )}
                     </div>
                 </Container>
